@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
         if(res.data.status){
             success(res.data.message)
             setIsAuthorized(true)
-            authUser()
+            await authUser();
             navigate('/')
         }else{
             error(res.data.message)
