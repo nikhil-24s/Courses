@@ -19,7 +19,7 @@ export const CourseProvider = ({ children }) => {
         formData.append("courseDesc", courseDesc);
         formData.append("coursePrice", coursePrice);
         formData.append("image", courseImage);
-        const res = await axios.post('http://localhost:3000/api/add-course', formData ,{
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/add-course', formData ,{
             headers: { "Content-Type": "multipart/form-data" },
     });
         if (res.data.status) {
@@ -30,7 +30,7 @@ export const CourseProvider = ({ children }) => {
         }
     }
     const getAllCourses = async () => {
-        const res = await axios.get('http://localhost:3000/api/all-course');
+        const res = await axios.get('https://nikhilcourses.vercel.app/api/all-course');
         if (res.data.status) {
             setAllCourses(res.data.courses);
             setLoading(false)
@@ -39,7 +39,7 @@ export const CourseProvider = ({ children }) => {
         }
     }
     const getCourse = async (id) => {
-        const res = await axios.post('http://localhost:3000/api/get-course',{id});
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/get-course',{id});
         if (res.data.status) {
             setLoading(false)
             return res.data.course;
@@ -49,7 +49,7 @@ export const CourseProvider = ({ children }) => {
         }
     }
     const updateCourse = async (courseName, courseDesc, coursePrice,id, navigate) => {
-        const res = await axios.post('http://localhost:3000/api/update-course',{courseName, courseDesc, coursePrice,id});
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/update-course',{courseName, courseDesc, coursePrice,id});
         if(res.data.status){
             success(res.data.message)
             navigate('/courses')
@@ -58,7 +58,7 @@ export const CourseProvider = ({ children }) => {
         }
     }
     const deleteCourse = async (id, navigate) => {
-        const res = await axios.post('http://localhost:3000/api/delete-course',{id});
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/delete-course',{id});
         if(res.data.status){
             success(res.data.message)
             navigate('/courses')

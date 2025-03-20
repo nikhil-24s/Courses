@@ -15,7 +15,7 @@ export const AuthProvider = ({children}) => {
     }
     
     const register = async (username, email, password, navigate)=>{
-        const res = await axios.post('http://localhost:3000/api/register',{username, email, password});
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/register',{username, email, password});
         if(res.data.status){
             success(res.data.message)
             navigate('/login')
@@ -24,7 +24,7 @@ export const AuthProvider = ({children}) => {
         }
     }
     const login = async (email, password, navigate)=>{
-        const res = await axios.post('http://localhost:3000/api/login',{email, password}, { withCredentials: true });
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/login',{email, password}, { withCredentials: true });
         if(res.data.status){
             success(res.data.message)
             setIsAuthorized(true)
@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
         }
     }
     const logout = async (navigate)=>{
-        const res = await axios.post('http://localhost:3000/api/logout',{},{ withCredentials: true });
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/logout',{},{ withCredentials: true });
         if(res.data.status){
             success(res.data.message)
             setIsAuthorized(false)
@@ -46,7 +46,7 @@ export const AuthProvider = ({children}) => {
         }
     }
     const authUser = async ()=>{
-        const res = await axios.post('http://localhost:3000/api/authUser',{},{ withCredentials: true });
+        const res = await axios.post('https://nikhilcourses.vercel.app/api/authUser',{},{ withCredentials: true });
         if (res.data.status) {
             setIsAuthorized(true);
             setUser(res.data.user); 
